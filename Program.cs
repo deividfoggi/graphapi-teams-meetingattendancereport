@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using Microsoft.Identity.Client;
 using Microsoft.Graph;
 using Microsoft.Extensions.Configuration;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Helpers;
 
 namespace graphdaemon
@@ -50,11 +52,14 @@ namespace graphdaemon
                     // For each onlineMeeting found, we print the results including the MeetingAttendance report if any exists. The report become avaiable after meeting ends.
                     foreach (var item2 in onlineMeetingResult)
                     {
+                        var meetingAttendanceReport = client.Users[config["targetUserId"]].OnlineMeetings[item2.Id].MeetingAttendanceReport
+                            .Request()
+                            .GetAsync().Result;
 
                         Console.WriteLine("");
                         Console.WriteLine("Subject : " + item.Subject);
                         Console.WriteLine("onlineMeeting: " + item.OnlineMeeting.JoinUrl);
-                        Console.WriteLine("Attendance Report: " + item2.MeetingAttendanceReport);
+                        Console.WriteLine("Attendance Report: " + JsonSerializer.Serialize(meetingAttendanceReport));
                     }
                 }
             }
