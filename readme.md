@@ -2,7 +2,7 @@
 Teams API demo
 
 ## Pre-reqs
- - Visual Studio or Visual Studio Code
+ - .Net Core 5.0
  - Azure AD trial account
  - Office 365 account with Teams licensed user
  - Meetings that have started in the last 30 days with at least one user who joined the meeting for some moment
