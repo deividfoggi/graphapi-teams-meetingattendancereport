@@ -1,8 +1,7 @@
 # Teams Meetings Attendance Report
-IdentityLabs
+Teams API demo
 
 ## Pre-reqs
-]
  - Visual Studio or Visual Studio Code
  - Azure AD trial account
  - Office 365 account with Teams licensed user
